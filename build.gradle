@@ -8,10 +8,10 @@ version '1.0'
 
 repositories {
     mavenCentral()
-    mavenCentral()
 }
 
 dependencies {
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
