@@ -2,22 +2,18 @@ import java.io.File
 
 fun main(){
 
-    val example = "199\n" +
-            "200\n" +
-            "208\n" +
-            "210\n" +
-            "200\n" +
-            "207\n" +
-            "240\n" +
-            "269\n" +
-            "260\n" +
-            "263"
+    val example = "forward 5\n" +
+            "down 5\n" +
+            "forward 8\n" +
+            "up 3\n" +
+            "down 8\n" +
+            "forward 2"
 
-    val day = 1
+    val day = 2
     val puzzle = 2
     val prod = true
 
-    val solver = Day1()
+    val solver = Class.forName("Day$day").kotlin.constructors.first().call() as Solution
 
     val input = if(prod) getInput(day)  else example.split("\n")
 
@@ -28,13 +24,13 @@ fun main(){
         solver.solve2(input)
     }
 
-    println(solution)
+    println(solution.toString())
 
 }
 
 interface Solution{
-    fun solve1(input: List<String>) : String
-    fun solve2(input: List<String>) : String
+    fun solve1(input: List<String>) : Any
+    fun solve2(input: List<String>) : Any
 }
 
 fun getInput(day: Int) : List<String>{
