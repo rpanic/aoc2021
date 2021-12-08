@@ -2,20 +2,28 @@ import java.io.File
 
 fun main(){
 
-    val example = "00100\n" +
-            "11110\n" +
-            "10110\n" +
-            "10111\n" +
-            "10101\n" +
-            "01111\n" +
-            "00111\n" +
-            "11100\n" +
-            "10000\n" +
-            "11001\n" +
-            "00010\n" +
-            "01010"
+    val example = "be cfbegad cbdgef fgaecd cgeb fdcge agebfd fecdb fabcd edb |" +
+            "fdgacbe cefdb cefbgd gcbe\n" +
+            "edbfga begcd cbg gc gcadebf fbgde acbgfd abcde gfcbed gfec |" +
+            "fcgedb cgb dgebacf gc\n" +
+            "fgaebd cg bdaec gdafb agbcfd gdcbef bgcad gfac gcb cdgabef |" +
+            "cg cg fdcagb cbg\n" +
+            "fbegcd cbd adcefb dageb afcb bc aefdc ecdab fgdeca fcdbega |" +
+            "efabcd cedba gadfec cb\n" +
+            "aecbfdg fbg gf bafeg dbefa fcge gcbea fcaegb dgceab fcbdga |" +
+            "gecf egdcabf bgf bfgea\n" +
+            "fgeab ca afcebg bdacfeg cfaedg gcfdb baec bfadeg bafgc acf |" +
+            "gebdcfa ecba ca fadegcb\n" +
+            "dbcfg fgd bdegcaf fgec aegbdf ecdfab fbedc dacgb gdcebf gf |" +
+            "cefg dcbef fcge gbcadfe\n" +
+            "bdfegc cbegaf gecbf dfcage bdacg ed bedf ced adcbefg gebcd |" +
+            "ed bcgafe cdgba cbgef\n" +
+            "egadfb cdbfeg cegd fecab cgb gbdefca cg fgcdab egfdb bfceg |" +
+            "gbdfcae bgc cg cgb\n" +
+            "gcafb gcf dcaebfg ecagb gf abcdeg gaef cafbge fdbac fegbdc |" +
+            "fgae cfgab fg bagce"
 
-    val day = 3
+    val day = 8
     val puzzle = 2
     val prod = true
 
