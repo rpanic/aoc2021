@@ -21,24 +21,6 @@ class Day8 : Solution {
         val cables = 0..6
         val segments = 'a'..'g'
 
-        val findMapping = { input: List<String> ->
-
-            var found = false
-            var ret: Map<Char, Int> = mapOf()
-            while(!found){
-                val mapping = segments.zip(cables.shuffled()).toMap()
-                val valid = input.all {
-                    val wordSet = it.map { mapping[it] }.toSet()
-                    segmentsToDigits.containsKey(wordSet)
-                }
-                if(valid){
-                    ret = mapping
-                    found = true
-                }
-            }
-            ret
-        }
-
         fun getMapping(): Map<Char, Int> {
             permute@ while (true) {
                 val perm = segments.zip(cables.shuffled()).toMap()
