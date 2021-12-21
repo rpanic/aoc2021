@@ -18,12 +18,6 @@ class Day21 : Solution {
 
     }
 
-    class Player(var score: Int = 0){
-        fun addScore(add: Int){
-            score += add
-        }
-    }
-
     override fun solve1(input: List<String>): Any {
 
         var (p1, p2) = input.map { it.takeLast(2).trim().toInt() }
@@ -52,17 +46,51 @@ class Day21 : Solution {
 
         }
 
-        val (min, max) = listOf(pointsp1, pointsp2).sorted()
+        val (min, _) = listOf(pointsp1, pointsp2).sorted()
 
         return min * dice.diced
 
     }
 
+    data class GameState(val p1: Int, val p2: Int, val score1: Int, val score2: Int){
+    }
+
     override fun solve2(input: List<String>): Any {
 
-//        val allPossibilities = (0..20).map { mutableListOf<Int>() }.toList()
+        val cache = mutableMapOf<GameState, Pair<Long, Long>>()
 
+        fun countWins(g: GameState) : Pair<Long, Long>{
+            return if(g.score1 >= 21){
+                1L to 0L
+            }else if(g.score2 >= 21){
+                0L to 1L
+            }else if(g in cache){
+                cache[g]!!
+            }else{
 
-        return 0
+                var ans = 0L to 0L
+
+                (1 .. 3).cartesian(1 .. 3).cartesian(1 .. 3).forEach { (p, c) ->
+
+                    val (a, b) = p
+                    val newp1 = (g.p1 + a + b + c) % 10
+                    val newscore1 = g.score1 + newp1 + 1
+
+                    val rec = countWins(GameState(g.p2, newp1, g.score2, newscore1))
+                    ans = ans.first + rec.second to ans.second + rec.first
+
+                }
+
+                cache[g] = ans
+                ans
+            }
+
+        }
+
+        var (p1, p2) = input.map { it.takeLast(2).trim().toInt() }
+
+        val ret = countWins(GameState(p1-1, p2-1, 0, 0))
+
+        return listOf(ret.first, ret.second).maxOrNull()!!
     }
 }
